@@ -125,10 +125,3 @@ A valid query would be:  https://content.osu.edu/classes/search/?q=&campus=col&p
 How to apply to become a grader or a instructor of a course
 
 A course can have a instructor and have multiple grader. The number of grader for a course is determined admin. Admin can increase or decrease the maximum number of grader for a course by increase the Max Grader Number and decrease the Max Grader Number on the admin page. If a course is applicable, student or instructor can click on apply to show the willingness to be a grader or instructor and waiting the admin to approve. And admin can approve the apply in the admin page.	
----------------------------------
-
-Contributing Team members:  
-    Erik Thompson  
-    Shukant Pal  
-    Songcheng Zhang  
-    Haojia Feng  
