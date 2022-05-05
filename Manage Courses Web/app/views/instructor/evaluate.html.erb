@@ -1,0 +1,21 @@
+<%= form_with(model: @evaluation) do |form| %>
+    <div class="field">
+        <%= form.label :student %>
+    </div>
+    <span>Select the student you want to evaluate:</span>
+    <div>
+        <%= form.select :student_email,
+                        User.all
+                            .filter { |user| user.role == "students" }
+                            .map { |user| user.email }  %>
+    </div>
+    <div>
+        <%= form.label :body %>
+    </div>
+    <div>
+        <%= form.text_area :body, size: "80x20" %> 
+    </div>
+    <div class="action">
+        <%= form.submit %>
+    </div>
+<% end %>

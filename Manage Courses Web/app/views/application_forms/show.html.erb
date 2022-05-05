@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+<h1>
+User Email
+</h1>
+<%= @application_form.userEmail %>
+
+<h2>
+Qualifications
+</h2>
+<%= @application_form.qualifications %>
+
+
+<h2> 
+Application Details
+</h2>
+<%= @application_form.details %>
+
+
+<div>
+  <%= link_to "Edit this application form", edit_application_form_path(@application_form) %>
+
+  <%= button_to "Destroy this application form", @application_form, method: :delete %>
+</div>
+<%= render "role/backToLink" %>

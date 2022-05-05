@@ -1,0 +1,56 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+    <h1> Course Title: </h1>
+    <%= @course.title %> 
+</p>
+
+<p>
+    <h2> Course Description: </h2>
+    <%= simple_format(@course.shortDescription) %>
+</p> 
+
+    <h2> Course Sections: </h2>
+    <table id = "section-table" border = "1">
+    <tr>
+    <th>Section</th>
+    <th>InstructionMode</th>
+    <th>Subject</th>
+    <th>Location</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Meeting Days</th>
+    <th>Grader</th>
+    </tr>
+    <% Section.all.where(course_id: @course.id).each do |sec1| %>
+      
+      
+      <tr>
+      <td> <%= sec1.section %> </td>
+      <td> <%= sec1.instructionMode %> </td>
+      <td> <%= sec1.subject %> </td>
+      <td> <%= sec1.location %> </td> 
+      <td> <%= sec1.startDate %> </td> 
+      <td> <%= sec1.endDate %> </td> 
+      <td> <%= sec1.meetingDays %> </td> 
+      <td>
+    <% Grader.where(course_id: @course.id).each do |grader| %>
+      <%= User.find(grader.user_id).email %>
+    <% end %>
+    </td>
+
+      </tr>
+    <%  end %>
+    </table>
+
+  <% if current_user&& current_user.admin? %>
+    <div>
+      <%= link_to "Edit this course", edit_course_path(@course) %>
+      </div>
+  
+
+  <%= button_to "Destroy this course", @course, method: :delete %>
+  <%end%>
+  <%= render "role/backToLink" %>
+  <td><%= button_to "Back", :controller=>'home',  :action => 'index' %></td>
+

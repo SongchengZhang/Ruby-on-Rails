@@ -1,0 +1,23 @@
+<h1>Editing course</h1>
+
+<%= render "form", course: @course %>
+
+<br>
+
+<div>
+  <%= link_to "Show this course", @course %> |
+  <% if current_user&& current_user.admin? %>
+        
+        
+        <%= link_to "Back to Admin page", :controller => 'admin',:action => 'class' %>
+    <%end%>
+     <% if current_user&& current_user.instructor? %>
+        
+       
+        <%= link_to "Back to Instructor page", :controller => 'instructor',:action => 'class' %>
+    <%end%>
+    <% if current_user&& current_user.students? %>
+        
+        <%= link_to "Back to Student page", :controller => 'students',:action => 'class' %>
+    <%end%>
+</div>

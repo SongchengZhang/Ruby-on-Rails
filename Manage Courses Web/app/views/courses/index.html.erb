@@ -1,0 +1,24 @@
+
+
+
+<table id = "course-table" border = "1">
+<tr>
+  <th>Course Title</th>
+  <th>Number </th>
+  <th>Term</th>
+  <th>Description</th>
+</tr>
+
+<% @courses.each do |course| %>
+  <tr>
+ 
+ <td> <%= course.title %> </td>
+ <td> <%= course.catalogNumber %> </td>
+ <td> <%= course.term %> </td>
+ <td> <%= course.shortDescription %> </td> 
+ </tr>
+     <% end %>
+
+ 
+ </table>
+ <%== pagy_nav(@pagy) if @pagy.pages > 1 %>

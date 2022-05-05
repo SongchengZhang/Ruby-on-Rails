@@ -1,0 +1,45 @@
+<% if Course.count == 0 %>
+<p>There are not any courses currently in the system.</p>
+<% else %>
+<p>Showing courses <%= @courses.count %> out of <%= Course.count%> </p>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<table id = "course-table" border = "1">
+  <tr>
+    <th>Course Title</th>
+    <th>Number </th>
+    <th>Term</th>
+    <th>Description</th>
+    <th>MaxGrader</th>
+    <th>Graders</th>
+  </tr>
+  
+  <% @courses.each do |course| %>
+    <tr>
+   
+   <td> <%= course.title %> </td>
+   <td> <%= course.catalogNumber %> </td>
+   <td> <%= course.term %> </td>
+   <td> <%= course.shortDescription %> </td> 
+   <td> <%= course.maxNumber %> </td>
+   <td>
+    <% Grader.where(course_id: course.id).each do |grader| %>
+      <%= User.find(grader.user_id).email %>
+    <% end %>
+    </td>
+   <td> <%= link_to "Show this course", course %> </td>
+   <td> <%= link_to "Edit this course", edit_course_path(course) %> </td>
+   <td> <%= button_to "Destroy this course", course, method: :delete %> </td>
+    <td> <%= link_to "increase the Max Grader Number",controller: "admin" ,action: "increaseMax", id: course.id %> </td>
+    
+    <td> <%= link_to "decrease the Max Grader Number",controller: "admin" ,action: "decreaseMax", id: course.id %> </td>
+
+
+    </tr>
+   
+   <% end %>
+   
+   </table>
+   
+   <br>
+   <%= link_to "New course", new_course_path %>
+<% end %>

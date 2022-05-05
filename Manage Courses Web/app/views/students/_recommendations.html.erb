@@ -1,0 +1,11 @@
+<% recommendations = Recommendation.where(student_email: current_user.email) %>
+You have <%= recommendations.length %> recommendation(s)
+<% recommendations.each do |rec| %>
+  <div style="border: 1px solid gray; border-radius: 2px; padding: 8px; margin-top: 8px;">
+    <h4>Apply for  <%= rec.course_id > 0 ? Course.find(rec.course_id).title : "a course" %></h4>
+    <section>Recommendation from <%= User.find(rec.user_id).email %></section>
+    <br />
+    <%= button_to "Apply", :controller=>'recommendations', :action=>'apply', id: rec.id, user_id: current_user.id, course_id: rec.course_id %>
+    <%= button_to "Discard", :controller=>'recommendations', :action=>'delete', id:rec.id %>
+  </div>
+<% end %>

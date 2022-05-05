@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meetingNumber: 1
+  facilityId: 1
+  facilityType: MyString
+  faciltyDescription: MyText
+  facilityDescriptionShort: MyString
+  facilityGroup: MyString
+  facilityCapacity: 1
+  buildingCode: MyString
+  room: MyString
+  buildingDescription: MyText
+  buildingDescriptionShort: MyString
+  startTime: MyString
+  endTime: MyString
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false
+  standingMeetingPattern: MyString
+
+two:
+  meetingNumber: 1
+  facilityId: 1
+  facilityType: MyString
+  faciltyDescription: MyText
+  facilityDescriptionShort: MyString
+  facilityGroup: MyString
+  facilityCapacity: 1
+  buildingCode: MyString
+  room: MyString
+  buildingDescription: MyText
+  buildingDescriptionShort: MyString
+  startTime: MyString
+  endTime: MyString
+  monday: false
+  tuesday: false
+  wednesday: false
+  thursday: false
+  friday: false
+  saturday: false
+  sunday: false
+  standingMeetingPattern: MyString

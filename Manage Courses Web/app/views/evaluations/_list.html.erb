@@ -1,0 +1,8 @@
+<% evaluations.each do |evaluation| %>
+    <div style="border: 0.5px solid black; border-radius: 2px; margin: 8px 0px; padding: 8px;">
+        <h4>You have an evaluation from <%= User.find(evaluation.instructor_id).email %></h4>
+        <p>
+            <%= evaluation.body %>
+        </p>
+    </div>
+<% end %>

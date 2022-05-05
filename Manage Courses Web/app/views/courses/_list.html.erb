@@ -1,0 +1,42 @@
+<% if Course.count == 0 %>
+<p>There are not any courses currently in the system.</p>
+<% else %>
+<p>Showing courses <%= @courses.count %> out of <%= Course.count%> </p>
+<% end %>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<table id = "course-table" border = "1">
+  <tr>
+    <th>Course Title</th>
+    <th>Number </th>
+    <th>Term</th>
+    <th>Description</th>
+  </tr>
+
+  <% @courses.each do |course| %>
+  <%uc=UserCourse.where(user_id: current_user.id, course_id: course.id, apply: 0)%>
+
+    <tr>
+   <td> <%= course.title %> </td>
+   <td> <%= course.catalogNumber %> </td>
+   <td> <%= course.term %> </td>
+   <td> <%= course.shortDescription %> </td> 
+  <td> <%= link_to "Show this course", course %> </td>
+
+ <% if current_user.role == 'instructor'%>
+  <td><%= link_to "Apply", action: "apply_course", controller: "instructor", id: current_user.id, id2: course.id %></td>
+ <%end%>
+  <% if course.maxNumber > course.graderNumber %>
+    <% if current_user.role == 'students'  || current_user.role == 'student_pending_instructor' %>
+      <td><%= link_to "Apply", action: "apply_grader", controller: "students", id: current_user.id, id2: course.id %></td>
+    <%end%>
+
+
+  <% end %>
+   </tr>
+   <%end%>
+
+
+
+   
+   </table>
+   

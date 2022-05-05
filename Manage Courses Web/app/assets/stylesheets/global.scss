@@ -1,0 +1,65 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body {
+  padding-top: 60px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+}
+
+h1, h2 {
+  line-height: 1;
+  font-size: 3em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h1 {
+  letter-spacing: -2px;
+}
+
+h2 {
+  letter-spacing: -1px;
+  font-weight: normal;
+  color: rgba(9, 24, 241, 0.315);
+}
+
+p {
+  font-size: 1.3em;
+  line-height: 2em;
+}
+
+
+
+.checkbox {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 0;
+}

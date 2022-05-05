@@ -1,0 +1,14 @@
+<% if current_user&& current_user.admin? %>
+        
+        
+        <%= link_to "Admin Page", :controller => 'admin',:action => 'index' %>
+    <%end%>
+     <% if current_user&& current_user.instructor? or current_user.instructor_pending_admin? %>
+        
+       
+        <%= link_to "Instructor Page", :controller => 'instructor',:action => 'index' %>
+    <%end%>
+    <% if current_user&& (current_user.students? or current_user.student_pending_instructor? or current_user.student_pending_admin?)%>
+        
+        <%= link_to "Student Page", :controller => 'students',:action => 'index' %>
+    <%end%>

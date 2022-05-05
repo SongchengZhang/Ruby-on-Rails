@@ -1,0 +1,22 @@
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%= render 'students/recommendations' %>
+<hr />
+<%= render 'evaluations/list', evaluations: Evaluation.where(student_email: current_user.email)  %>
+
+<h1>Course Catalog</h1>
+
+<h3>Class Listing</h3>
+<%#Brose course list %>
+<%= render 'courses/list' %>
+<%#Apply for an admin or instructor %>
+<% user=current_user %>
+
+<td><%= button_to "Apply for an instructor", action: "approve_pending_ins", data: {id: user.id } %></td>  
+<td><%= button_to "Apply for an admin", action: "approve_pending_admin", data: {id: user.id } %></td>  
+<% app1 =ApplicationForm.where(userEmail: current_user.email) %>
+<%= link_to "New Application Form", new_application_form_path %>
+<td><%= button_to "Back", :controller=>'home',  :action => 'index' %></td>

@@ -1,0 +1,59 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  classNumber: MyString
+  section: MyString
+  component: MyString
+  instructionMode: MyString
+  courseOfferingNumber: 1
+  courseId: MyString
+  academicGroup: MyString
+  subject: MyString
+  catalogNumber: MyString
+  career: MyString
+  description: MyString
+  enrollmentStatus: MyString
+  status: MyString
+  type: 
+  associatedClass: MyString
+  autoEnrollWaitlist: false
+  autoEnrollSection1: false
+  autoEnrollSection2: false
+  consent: false
+  waitlistCapacity: 1
+  minimumEnrollment: 1
+  enrollmentTotal: 1
+  waitlistTotal: 1
+  academicOrg: MyString
+  location: MyString
+  equivalentCourseId: MyString
+  startDate: MyString
+
+two:
+  classNumber: MyString
+  section: MyString
+  component: MyString
+  instructionMode: MyString
+  courseOfferingNumber: 1
+  courseId: MyString
+  academicGroup: MyString
+  subject: MyString
+  catalogNumber: MyString
+  career: MyString
+  description: MyString
+  enrollmentStatus: MyString
+  status: MyString
+  type: 
+  associatedClass: MyString
+  autoEnrollWaitlist: false
+  autoEnrollSection1: false
+  autoEnrollSection2: false
+  consent: false
+  waitlistCapacity: 1
+  minimumEnrollment: 1
+  enrollmentTotal: 1
+  waitlistTotal: 1
+  academicOrg: MyString
+  location: MyString
+  equivalentCourseId: MyString
+  startDate: MyString

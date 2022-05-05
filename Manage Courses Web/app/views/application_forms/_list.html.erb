@@ -1,0 +1,18 @@
+<table id = "ApplicationForm-table" border = "1">
+  <tr>
+    <th>Email</th>
+    <th>Application Details                     </th>
+    <th>Applicaiton Qualifications              </th>
+  </tr>
+
+  <% @ApplicationForms.each do |applic| %>
+
+        <tr>
+        <td> <%= applic.userEmail %> </td>
+        <td> <%= applic.details %> </td>
+        <td> <%= applic.qualifications %> </td>
+        <td> <%= link_to "Show this Application Form", applic %> </td>
+        </tr>
+    <%end%>
+
+  </table>

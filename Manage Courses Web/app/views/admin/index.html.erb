@@ -1,0 +1,91 @@
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%= link_to "Recommend a student to become a grader", controller: "recommendations" ,action: "new" %>
+<div>
+  <%= link_to "Submit an evaluation", controller: "instructor", action: "evaluate" %>
+</div>
+
+<h1>Course Catalog</h1>
+
+<h3>Class Listing</h3>
+<%#Browse catalog %>
+<%= render 'courses/adminload' %>
+
+<%= render 'courses/adminlist' %>
+<table>
+  <tbody>
+      <h3>Browse Instructor applying course</h3>
+      <% UserCourse.all.each do |user| %>
+      <% if user.apply == 1%>
+      <%user1=User.find_by(id: user.user_id)%>
+      <%=user1.email%>
+      <%user2=Course.find_by(id: user.course_id)%>
+      <%=user2.title%>
+      <%= link_to "Approve", controller: "admin" ,action: "approve_course" , id: user.id %>
+      <%= link_to "Dispprove", controller: "admin" ,action: "disapprove_course" , id: user.id %>
+      <br>
+      <%end%>
+    <%end%>
+
+  </tbody>
+</table>
+<table>
+  <tbody>
+      <h3>Students apply to become a grader</h3>
+      <% UserCourse.all.each do |user| %>
+      <% if user.gApply == 1%>
+      <%user1=User.find_by(id: user.user_id)%>
+      <%=user1.email%>
+      <%user2=Course.find_by(id: user.course_id)%>
+      <%=user2.title%>
+      <%= form_with url: "approve_grader", method: :post do |form| %>
+        <%= form.select :section_id, Section.where(course_id: user.course_id).map { |section|
+          [section.classNumber, section.id]
+        } %>
+        <%= form.button "Approve", type: "submit", name: "id", value: user.id %>
+        <%= link_to "Disapprove", controller: "admin" ,action: "disapprove_grader" , id: user.id %>
+        <%= link_to "Show this application form", ApplicationForm.where(userEmail: user1.email).last %>
+        
+
+      <% end %>
+      <br>
+      <%end%>
+    <%end%>
+
+</table>
+  <tbody>
+      <h3>Browse Instructor pending</h3>
+      <% User.all.each do |user| %>
+      <%#Let admin browse the pending requests from students %>
+      <% if user.role == 'student_pending_instructor' %>
+            <td><%=user.email %></td> wants to be an Instructor
+
+       <td><%= button_to "Approve", action: "approve_instructor", data: {id: user.id } %></td>
+          <%= button_to "Refuse", action: "refuse_admin", data: {id: user.id } %>
+      <%end%>
+
+
+    <%end%>
+
+  </tbody>
+  </table>
+  <tbody>
+      <%#Let admin browse the pending requests from students or instructors %>
+      <h3>Browse Admin pending</h3>
+      <% User.all.each do |user| %>
+
+      <% if user.role == 'student_pending_admin' or user.role == 'instructor_pending_admin'  %>
+            <td><%=user.email %></td> wants to be an Admin
+       <td><%= button_to "Approve", action: "approve_admin", data: {id: user.id } %></td>
+        <%= button_to "Refuse", action: "refuse_admin", data: {id: user.id } %>
+      <%end%>
+
+
+    <%end%>
+     <td><%= button_to "Back", :controller=>'home',  :action => 'index' %></td>
+
+  </tbody>
+  

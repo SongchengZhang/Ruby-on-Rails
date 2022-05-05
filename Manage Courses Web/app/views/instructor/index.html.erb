@@ -1,0 +1,26 @@
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.text_field :search %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<%= render 'students/recommendations' %>
+
+<h1>Instructor Page</h1>
+
+<%= link_to "Recommend a student to become a grader", controller: "recommendations" ,action: "new" %>
+<div>
+  <%= link_to "Submit an evaluation", controller: "instructor", action: "evaluate" %>
+</div>
+
+<h3>Class Listing</h3>
+<%#Browse course list %>
+<%= render 'courses/list' %>
+</table>
+  <tbody>
+  <%#Apply for an admin %>
+     <% user=current_user %>
+    <td><%= button_to "Apply for an admin", action: "approve_pending_admin", data: {id: user.id } %></td>  
+     <td><%= button_to "Back", :controller=>'home',  :action => 'index' %></td>
+
+  </tbody>
+  

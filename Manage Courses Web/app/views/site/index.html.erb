@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+    <h1>Welcome <%= current_user.email %></h1>
+    <br />
+        <%= link_to image_tag("Blizard/image.png"), root_path %>
+    <h3>Personal Profile</h3>    
+    <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+
+
+    <hr />
+
+    <ul>
+        <li><%= render 'role/backToLink' %>
+        <li><%= link_to "Reset password", edit_user_registration_path %>
+    </ul>
+<% else %>
+    <h1>OSU Applications for Graders</h1>
+    <hr />
+    <%= link_to "Log in", new_user_session_path %><br />
+    <%= link_to "Sign up", new_user_registration_path %>
+<% end %>

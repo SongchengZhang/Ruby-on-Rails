@@ -1,0 +1,9 @@
+
+
+<h3>Search Result</h3>  
+
+    <% @results.each do |result| %>  
+        <%= result.title %><br>  
+          <td> <%= link_to "Show this course", result %> </td>
+    <% end %>
+ <td><%= button_to "Back", :controller=>'home',  :action => 'index' %></td>
